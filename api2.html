@@ -13,21 +13,39 @@
    <body>
 
       <!--<input type="text" id="search" name="text" placeholder="Enter something...">-->
-      <select id="animal">
-         <option name="animal" value=" ">Choose type of Pet</option>
-         <option name="animal" value="barnyard">Barnyard</option>
-         <option name="animal" value="bird">Bird</option>
-         <option name="animal" value="cat">Cat</option>
-         <option name="animal" value="dog">Dog</option>
-         <option name="animal" value="horse">Horse</option>
-         <option name="animal" value="pig">Pig</option>
-         <option name="animal" value="reptile">Reptile</option>
-         <option name="animal" value="smallfurry">Smallfurry</option>
-      </select>
-      <select id="breed">
-         <option class="s_breed" id="s_breed" label="Select Breed" selected></option>
-      </select>
-      <button id="search">Search</button>
+      <form action="" method="POST" name="findpet">
+         <label for="location">Location</label>
+         <input type="text" placeholder="Ex: Orlando, Fl or 32804" id="location" name="location">
+         
+         <label for="animal">Type of animal</label>
+         <select id="animal" title="Animal type">
+            <option class="animal" name="animal" selected value="">Any</option>
+            <option class="animal" name="animal" value="dog">Dog</option>
+            <option class="animal" name="animal" value="cat">Cat</option>
+            <option class="animal" name="animal" value="rabbit">Rabbit</option>
+            <option class="animal" name="animal" value="smallfurry">Smallfurry</option>
+            <option class="animal" name="animal" value="horse">Horse</option>
+            <option class="animal" name="animal" value="bird">Bird</option>
+            <option class="animal" name="animal" value="reptile">Reptile</option>
+            <option class="animal" name="animal" value="barnyard">Barnyard</option>
+            <option class="animal" name="animal" value="pig">Pig</option>
+         </select>
+         <label for="breed">Select Breed</label>
+         <select id="breed">
+            <option class="s_breed" id="s_breed" label="Breed" selected></option>
+         </select>
+         <label for="baby">Baby</label>
+         <input type="checkbox" name="age" id="baby" value="Baby">
+         <label for="young">Young</label>
+         <input type="checkbox" name="age" id="young" value="Young">
+         <label for="adult">Adult</label>
+         <input type="checkbox" name="age" id="adult" value="Adult">
+         <label for="senior">Senior</label>
+         <input type="checkbox" name="age" id="senior" value="Senior">
+
+         <input type="submit" name="search" id="search" value="Search">
+      </form>
+
       <div id="profile"></div>
       <p id="loading"></p>
 
