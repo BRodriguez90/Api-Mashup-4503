@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+       <title></title>
+       <link rel="stylesheet" href="css/normalize.css">
+       <link rel="stylesheet" href="css/reset.css">
+       <link rel="stylesheet" href="css/cover.css">
+       <link rel="stylesheet" href="css/styles.css">
+   </head>
+
+   <body>
+
+      <!--<input type="text" id="search" name="text" placeholder="Enter something...">-->
+      <select id="animal">
+         <option name="animal" value=" ">Choose type of Pet</option>
+         <option name="animal" value="barnyard">Barnyard</option>
+         <option name="animal" value="bird">Bird</option>
+         <option name="animal" value="cat">Cat</option>
+         <option name="animal" value="dog">Dog</option>
+         <option name="animal" value="horse">Horse</option>
+         <option name="animal" value="pig">Pig</option>
+         <option name="animal" value="reptile">Reptile</option>
+         <option name="animal" value="smallfurry">Smallfurry</option>
+      </select>
+      <select id="breed">
+         <option class="s_breed" id="s_breed" label="Select Breed" selected></option>
+      </select>
+      <button id="search">Search</button>
+      <div id="profile"></div>
+      <p id="loading"></p>
+
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="scripts/api2.js"></script>
+   </body>
+</html>
