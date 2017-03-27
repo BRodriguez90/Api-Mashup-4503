@@ -11,9 +11,9 @@ $(function(){
    }); //end of click event function
 
    function getBreed(){
-      var user = $("select").val();
+      var fetchanimal= $("#animal").val();
       $('#breed').children().remove();
-      $.getJSON( petBreedApi + petkey + '&animal=' + user + '&callback=?',
+      $.getJSON( petBreedApi + petkey + '&animal=' + fetchanimal + '&callback=?',
          function(data){
             console.log(data.petfinder.breeds.breed);
             $.each(data.petfinder.breeds.breed, function(i,field){
@@ -22,5 +22,20 @@ $(function(){
             }); // end of each
       }); // end of getJson
    } // end of getBreed function
+   function findPet(){
+      var fetchanimal = $('#animal').val();
+      var fetchbreed = $('#breed').val();
+      var fetchgender = $('#gender').val();
+      var fetchlocation = $('#location').val();
+      $.getJSON( petFindApi + petkey + '&animal=' + fetchanimal + '&breed=' + fetchbreed + '&gender=' + fetchgender + '&count=10' + '&location=' + fetchlocation + '&callback=?',
+         function(data){
+            console.log(data);
+         });
+   }// end of findPet function
+
+   $('#search').on('click', function(e){
+      e.preventDefault();
+      findPet();
+   })
 
 }); // jQuery closing tag
