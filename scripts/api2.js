@@ -27,9 +27,15 @@ $(function(){
       var fetchbreed = $('#breed').val();
       var fetchgender = $('#gender').val();
       var fetchlocation = $('#location').val();
-      $.getJSON( petFindApi + petkey + '&animal=' + fetchanimal + '&breed=' + fetchbreed + '&gender=' + fetchgender + '&count=10' + '&location=' + fetchlocation + '&callback=?',
+      $.getJSON( petFindApi + petkey + '&animal=' + fetchanimal + '&breed=' + fetchbreed + '&sex=' + fetchgender + '&count=10' + '&location=' + fetchlocation + '&callback=?',
          function(data){
             console.log(data);
+            $.each(data.petfinder.pets.pet, function(i,field){
+               $('<img/>').attr('src', field.media.photos.photo[1].$t).appendTo('#profile');
+               $('#profile').append("<p>" + field.name.$t + " " + field.sex.$t + "</p>");
+               console.log(field.media.photos.photo[1].$t);
+            });
+
          });
    }// end of findPet function
 
