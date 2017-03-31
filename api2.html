@@ -6,23 +6,24 @@
        <title></title>
        <link rel="stylesheet" href="css/normalize.css">
        <link rel="stylesheet" href="css/reset.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
        <link rel="stylesheet" href="css/cover.css">
        <link rel="stylesheet" href="css/styles.css">
    </head>
 
    <body>
+      <div class="inner cover">
+        <h1 class="cover-heading">Meet your future companion.</h1>
+        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+        <p class="lead">
+          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+      </div>
 
       <!--<input type="text" id="search" name="text" placeholder="Enter something...">-->
       <form action="" method="POST" name="findpet">
          <label for="location">Location</label>
          <input type="text" required placeholder="Ex: Orlando, Fl or 32804" id="location" name="location">
-         <!--<label for="distance">Distance</label>
-         <select id="distance" name="distance">
-            <option class="pet_distance" value="10">Within 10 miles</option>
-            <option class="pet_distance" value="25">Within 25 miles</option>
-            <option class="pet_distance" value="50">Within 50 miles</option>
-            <option class="pet_distance" value="100">Within 100 miles</option>
-         </select>-->
 
          <label for="animal">Type of animal</label>
          <select id="animal" require name="animal" title="Animal type">
@@ -53,17 +54,108 @@
             <option value="M">Male</option>
             <option value="F">Female</option>
          </select>
-
+         <input type="submit" name="test" id="testsearch" value="testsearch">
          <input type="submit" name="search" id="search" value="Lookup pets">
       </form>
       <div class="container">
-         <div id="profile"></div>
-         <div id="map"></div>
+         <div class="row">
+            <div class="animals_list">
+               <img src="images/rolling.svg" id="rolling" alt="loading animals">
+               <!--<div id="profile"></div>-->
+            </div>
+         </div>
       </div>
+      <div id="map"></div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiLvjIbaySEKullv0nsGuJE47uolVDz48&callback=initMap" async defer></script>
-      <script src="scripts/api2.js"></script>
+      <script type="text/javascript" src="scripts/api2.js"></script>
+      <script type="text/javascript">
+         var myLatLng;
+         var map;
+         var marker;
+         var infowindow;
+         var markers = [];
+         var info_windows = [];
+         var contentString;
+         function initMap() {
+             myLatLng = {
+                 lat: 27.6021,
+                 lng: -81.5114
+             };
+             map = new google.maps.Map(document.getElementById('map'), {
+                 center: myLatLng,
+                 zoom:4,
+                 scrollwheel: false
+             });
+
+            shLatLng = [];
+            console.log(shLatLng);
+            pet_info = [];
+            console.log(pet_info);
+
+            map.addListener('click', function(event) {
+             addsMarker(event.shLatLng);
+           });
+
+           addsWindow();
+
+         } // end of google maps initMap
+
+         function addsMarker(){
+
+         for (var i = 0; i < shLatLng.length; i++) {
+           marker = new google.maps.Marker({
+                position: {lat:parseFloat(shLatLng[i].lat),lng:parseFloat(shLatLng[i].lng)},
+                map: map,
+                title: shLatLng[i].shelter,
+                clickable:true
+           });
+           google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                   contentString =
+                     '<div id="content" style="color:#000; text-shadow:none;">'+
+                         '<div id="siteNotice">'+
+                           '<img id="info_img" src="' + pet_info[i].picture + '"alt="' + pet_info[i].name + '">'+
+                         '</div>'+
+                         '<h1 id="firstHeading" class="firstHeading">'+ pet_info[i].name +'</h1>'+
+                         '<span class="age">Age:' + pet_info[i].age + '</span>' +
+                         '<span class="phone">Phone:' + pet_info[i].phone + '</span>' +
+                         '<div id="bodyContent">'+
+                         '<p style="color:#000; text-shadow:none; text-align:left; line-height:180%; font-size:initial;"><b>Bio/Description</b> ' + pet_info[i].description + '</p>'+
+                         '</div>'+
+                     '</div>';
+
+                    infowindow.setContent(contentString);
+                    //console.log(pet_info);
+                    //console.log(info_windows);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+          /*marker.addListener('click', function(event) {
+              addsWindow(event.pet_info)
+           });*/
+         }
+         markers.push(marker);
+      } // end addsMarker function
+
+      function addsWindow(){
+            infowindow = new google.maps.InfoWindow();
+      } // End addsWindow function
+
+      function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+              markers[i].setMap(map);
+            }
+         }
+      function clearMarkers() {
+       setMapOnAll(null);
+      }
+     function deleteMarkers() {
+        clearMarkers();
+        markers = [];
+      }
+      </script>
    </body>
 </html>
