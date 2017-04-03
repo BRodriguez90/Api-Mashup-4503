@@ -7,152 +7,188 @@
        <link rel="stylesheet" href="css/normalize.css">
        <link rel="stylesheet" href="css/reset.css">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-       <link rel="stylesheet" href="css/cover.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+       <linl rel="stylesheet" href="css/jquery.tiltShift.css">
+       <link rel="stylesheet" href="css/album.css">
+       <link href="https://fonts.googleapis.com/css?family=Open+Sans|Righteous" rel="stylesheet">
        <link rel="stylesheet" href="css/styles.css">
    </head>
 
    <body>
+      <nav class="navbar navbar-default navbar-fixed-top nav-col">
+        <div class="container container_mod">
+          <h1 class="text-center" id="site_name">Ever <i class="fa fa-paw" aria-hidden="true"></i> Animal</h1>
+        </div>
+      </nav>
+      <section class="hero_section">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-12">
+                <h2 class=" headd text-center">Find out where your next <span class="site_name2">Ever <i class="fa fa-paw" aria-hidden="true"></i> Animal</span> might be.</h2>
+             </div>
+          </div>
+          <div class="row">
+             <div class="col-sm-12 col-lg-7">
+               <div class="img_cont">
+                  <img class="responsive-img" id="puppy_hero" src="images/dog_fence_e_2.jpg" alt="Puppy in shelter" width="auto" height="462px">
+               </div>
+            </div>
+            <div class="col-sm-12 col-lg-5">
+             <div class="form-wrap">
+              <form action="" method="POST" name="findpet" class="pet_form text-center">
+                 <div class="form-group">
+                 <label for="location">Zipcode *</label>
+                 <input type="text" class="form-control" required placeholder="Ex: 32804" id="location" name="location">
+              </div>
+               <div class="form-group">
+                 <label for="animal">Animal *</label>
+                 <select id="animal" class="form-control" require name="animal" title="Animal type">
+                    <option class="animal" name="animal" selected value="cat">Cat</option>
+                    <option class="animal" name="animal" value="dog">Dog</option>
+                    <option class="animal" name="animal" value="rabbit">Rabbit</option>
+                    <option class="animal" name="animal" value="smallfurry">Smallfurry</option>
+                    <option class="animal" name="animal" value="horse">Horse</option>
+                    <option class="animal" name="animal" value="bird">Bird</option>
+                    <option class="animal" name="animal" value="reptile">Reptile</option>
+                    <option class="animal" name="animal" value="pig">Pig</option>
+                 </select>
+              </div>
+              <div class="form-group">
+                 <div class="breed_select">
+                    <label for="breed">Select Breed*</label>
+                    <select id="breed" class="form-control" name="breed">
+                       <option class="s_breed" id="s_breed" label="Breed" selected></option>
+                   </select>
+               </div>
+            </div>
+              <!--<label for="baby">Baby</label>
+              <input type="checkbox" name="age" id="baby" value="Baby">
+              <label for="young">Young</label>
+              <input type="checkbox" name="age" id="young" value="Young">
+              <label for="adult">Adult</label>
+              <input type="checkbox" name="age" id="adult" value="Adult">
+              <label for="senior">Senior</label>
+              <input type="checkbox" name="age" id="senior" value="Senior">-->
+              <div class="form-group">
+                 <label for="gender">Gender</label>
+                 <select id="gender" class="form-control" name="gender">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                 </select>
+              </div>
 
-      <!--<input type="text" id="search" name="text" placeholder="Enter something...">-->
-      <form action="" method="POST" name="findpet">
-         <label for="location">Location</label>
-         <input type="text" required placeholder="Ex: Orlando, Fl or 32804" id="location" name="location">
+              <input type="submit" class="btn btn-success" name="search" id="search" value="Lookup pets">
+           </form>
+        </div>    <!-- form-wrap -->
+     </div>
+  </div>       <!-- img form cont-->
+  </div>       <!-- container End-->
+     </section>
 
-         <label for="animal">Type of animal</label>
-         <select id="animal" require name="animal" title="Animal type">
-            <option class="animal" name="animal" selected value="">Any</option>
-            <option class="animal" name="animal" value="dog">Dog</option>
-            <option class="animal" name="animal" value="cat">Cat</option>
-            <option class="animal" name="animal" value="rabbit">Rabbit</option>
-            <option class="animal" name="animal" value="smallfurry">Smallfurry</option>
-            <option class="animal" name="animal" value="horse">Horse</option>
-            <option class="animal" name="animal" value="bird">Bird</option>
-            <option class="animal" name="animal" value="reptile">Reptile</option>
-            <option class="animal" name="animal" value="barnyard">Barnyard</option>
-            <option class="animal" name="animal" value="pig">Pig</option>
-         </select>
-         <label for="breed">Select Breed</label>
-         <select id="breed" name="breed">
-            <option class="s_breed" id="s_breed" label="Breed" selected></option>
-         </select>
-         <!--<label for="baby">Baby</label>
-         <input type="checkbox" name="age" id="baby" value="Baby">
-         <label for="young">Young</label>
-         <input type="checkbox" name="age" id="young" value="Young">
-         <label for="adult">Adult</label>
-         <input type="checkbox" name="age" id="adult" value="Adult">
-         <label for="senior">Senior</label>
-         <input type="checkbox" name="age" id="senior" value="Senior">-->
-         <select id="gender" name="gender">
-            <option value="M">Male</option>
-            <option value="F">Female</option>
-         </select>
-         <input type="submit" name="test" id="testsearch" value="testsearch">
-         <input type="submit" name="search" id="search" value="Lookup pets">
-      </form>
-      <div class="container">
-         <div class="row">
-            <div class="animals_list">
-               <img src="images/rolling.svg" id="rolling" alt="loading animals">
-               <!--<div id="profile"></div>-->
+      <div class="album text-muted">
+         <div class="container">
+            <div class="row" id="row_append">
+               <div class="animals_list">
+                  <img src="images/rolling.svg" id="rolling" alt="loading animals">
+                  <!--<div id="profile"></div>-->
+               </div>
             </div>
          </div>
       </div>
-      <div id="map"></div>
+      <!--<div class="map-wrap">-->
+         <h4 class="inst text-center">After your search click on map to see shelter locations. <span> Click on the <i class="fa fa-paw" aria-hidden="true"></i> to see descriptions of the animals.</h4>
+         <div id="map"></div>
+      <!--</div>-->
       <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiLvjIbaySEKullv0nsGuJE47uolVDz48&callback=initMap" async defer></script>
+      <script type="text/javascript" src="scripts/jquery.tiltShift.js"></script>
       <script type="text/javascript" src="scripts/date.js"></script>
       <script type="text/javascript" src="scripts/date-en-US.js"></script>
       <script type="text/javascript" src="scripts/api2.js"></script>
       <script type="text/javascript">
-         var myLatLng;
-         var map;
-         var marker;
-         var infowindow;
-         var markers = [];
-         var info_windows = [];
-         var contentString;
-         function initMap() {
-             myLatLng = {
-                 lat: 27.6021,
-                 lng: -81.5114
-             };
-             map = new google.maps.Map(document.getElementById('map'), {
-                 center: myLatLng,
-                 zoom:5
-                 //scrollwheel: false
-             });
-
-            shLatLng = [];
-            console.log(shLatLng);
-            pet_info = [];
-            console.log(pet_info);
-
-            map.addListener('click', function(event) {
-             addsMarker(event.shLatLng);
-          });
-
-           addsWindow();
-
-         } // end of google maps initMap
-
-         function addsMarker(){
-            var paw = "images/Paw-print2.svg";
-         for (var i = 0; i < shLatLng.length; i++) {
-           marker = new google.maps.Marker({
-                position: {lat:parseFloat(shLatLng[i].lat),lng:parseFloat(shLatLng[i].lng)},
-                map: map,
-               // label:pet_info[i].name,
-                icon:paw,
-                title: shLatLng[i].shelter,
-                clickable:true
-           });
-           google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                return function () {
-                   contentString =
-                     '<div id="content" style="color:#000; text-shadow:none;">'+
-                         '<div id="siteNotice">'+
-                           '<img id="info_img" src="' + pet_info[i].picture + '"alt="' + pet_info[i].name + '">'+
-                         '</div>'+
-                         '<h1 id="firstHeading" class="firstHeading">'+ pet_info[i].name +'</h1>'+
-                         '<p class="age">Age: ' + pet_info[i].age + '</p>' +
-                         '<p class="phone">Phone: ' + pet_info[i].phone + '</p>' +
-                         '<div id="bodyContent">'+
-                         '<p style="color:#000; text-shadow:none; text-align:left; line-height:180%; font-size:initial;"><b>About: </b> ' + pet_info[i].description + '</p>'+
-                         '</div>'+
-                     '</div>';
-
-                    infowindow.setContent(contentString);
-                    //console.log(pet_info);
-                    //console.log(info_windows);
-                    infowindow.open(map, marker);
-                }
-            })(marker, i));
-          /*marker.addListener('click', function(event) {
-              addsWindow(event.pet_info)
-           });*/
-         }
-         markers.push(marker);
-      } // end addsMarker function
-
-      function addsWindow(){
-            infowindow = new google.maps.InfoWindow();
-      } // End addsWindow function
-
-      function setMapOnAll(map) {
-            for (var i = 0; i < markers.length; i++) {
-              markers[i].setMap(map);
-            }
-         }
-      function clearMarkers() {
-       setMapOnAll(null);
-      }
-     function deleteMarkers() {
-        clearMarkers();
-        markers = [];
-      }
+      var myLatLng;
+      var map;
+      var marker;
+      var infowindow;
+      var markers = [];
+      var info_windows = [];
+      var contentString;
+      var wiki = 'https://en.wikipedia.org/wiki/'
+    function initMap() {
+        myLatLng = {
+            lat: 27.6021,
+            lng: -81.5114
+        };
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            zoom:5
+            //scrollwheel: false
+        });
+       shLatLng = [];
+       pet_info = [];
+       map.addListener('click', function(event) {
+        addsMarker(event.shLatLng);
+     });
+      addsWindow();
+    } // end of google maps initMap
+    function addsMarker(){
+       var paw = "images/Paw-print2.svg";
+    for (var i = 0; i < shLatLng.length; i++) {
+      marker = new google.maps.Marker({
+           position: {lat:parseFloat(shLatLng[i].lat),lng:parseFloat(shLatLng[i].lng)},
+           map: map,
+          // label:pet_info[i].name,
+           icon:paw,
+           title: shLatLng[i].shelter,
+           clickable:true
+      });
+      google.maps.event.addListener(marker, 'click', (function (marker, i) {
+         var fetchanimal = $("#animal").val();
+         var fetchbreed = $("#breed").val();
+           return function () {
+             contentString =
+                '<div id="content" style="color:#000; text-shadow:none;">'+
+                    '<div class="text-center" id="siteNotice">'+
+                      '<img id="info_img" src="' + pet_info[i].picture + '"alt="' + pet_info[i].name + '">'+
+                    '</div>'+
+                    '<h1 class="text-center" id="firstHeading" class="firstHeading">'+ pet_info[i].name +'</h1>'+
+                    '<p class=" text-center age">Age: ' + pet_info[i].age + '</p>' +
+                    '<p class="text-center phone">Phone: ' + pet_info[i].phone + '</p>' +
+                    '<p class="text-center email">Email: ' + pet_info[i].email + '</p>' +
+                    '<p>' + '<a href="'+wiki+fetchbreed+'_'+fetchanimal+'"' + 'target="_blank">About Breed</a>' + '</p>' +
+                    '<div id="bodyContent">'+
+                     '<p style="color:#000; text-shadow:none; text-align:left; line-height:180%; font-size:initial;"><b>About: </b> ' + pet_info[i].description + '</p>'+
+                    '</div>'+
+                '</div>';
+               infowindow.setContent(contentString);
+               //console.log(pet_info);
+               //console.log(info_windows);
+               infowindow.open(map, marker);
+           }
+       })(marker, i));
+     /*marker.addListener('click', function(event) {
+         addsWindow(event.pet_info)
+      });*/
+    }
+    markers.push(marker);
+ } // end addsMarker function
+ function addsWindow(){
+       infowindow = new google.maps.InfoWindow();
+ } // End addsWindow function
+ function setMapOnAll(map) {
+       for (var i = 0; i < markers.length; i++) {
+         markers[i].setMap(map);
+       }
+    }
+ function clearMarkers() {
+  setMapOnAll(null);
+ }
+function deleteMarkers() {
+   clearMarkers();
+   markers = [];
+ }
       </script>
    </body>
 </html>

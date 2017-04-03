@@ -5,6 +5,12 @@
       width:60rem;
       margin-left:auto;
       margin-right:auto;
+      border:4px solid #b6b9de;
+      border-radius:4px;
+     }
+     .nav-col{
+        background-color:#91d6ff;
+        color:#fff;
      }
      /* Optional: Makes the sample page fill the window. */
      html, body {
@@ -14,11 +20,49 @@
       /*height: 100%;
       margin: 0;
       padding: 0;*/
+      min-height: 0 !important;
      }
-     select#breed{
-        width:250px;
+     #site_name{
+       font-family: 'Righteous', cursive !important;
      }
-
+     .site_name2{
+        white-space: nowrap;
+        font-family: 'Righteous', cursive !important;
+     }
+     .hero_section{
+        margin-top:3%;
+     }
+     .headd{
+        font-family: 'Open Sans', sans-serif;
+        padding-bottom:15px;
+     }
+     .form-wrap{
+        width:400px;
+        height:462px;
+        background-color:#ddd;
+        padding:40px;
+        margin-left:auto;
+        font-family: 'Open Sans', sans-serif;
+     }
+     .pet_form{
+        width:100%;
+     }
+     .breed_select{
+        display:none;
+     }
+     #search{
+        background-color: rgba(255,29,29,0.7) !important;
+        border:1px solid rgba(255,29,29,0.7) !important;
+        box-shadow:1px 3px 10px 0 rgba(0,0,0,.18), 1px 1px 0px 0 rgba(0,0,0,.15);
+        cursor:pointer;
+     }
+     #search:hover{
+        box-shadow: 0 5px 10px 0 rgba(0,0,0,.18), 0 4px 22px 0 rgba(0,0,0,.15);
+     }
+     .album{
+        margin-top:35px;
+        display:none;
+     }
      p#noresults{
        font-size: 2rem;
        margin-left: auto;
@@ -40,6 +84,8 @@
      }
      img.adopt_pet:hover{
         transform:scale(1.17,1.08);
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
      }
      .pet_cards{
         background-color: #fff;
@@ -48,24 +94,71 @@
         border-radius:4px;
         box-shadow: 0px 0px 15px 0px rgba(49,49,49,0.57);
         margin-top:5px;
+        text-align:center;
      }
      .pet_cards>p{
         padding-top:7px;
      }
+
      div.card_info{
         background-color: rgba(255,29,29,0.7);
         margin-top:10px;
         color:#fff;
+     }
+     #mix{
+        text-transform: capitalize;
+     }
+     #date{
+        font-style: italic;
      }
      /*****
      ******
      -Map-
      ******
      *****/
+     .map-wrap{
+        margin-top:5%;
+        margin-bottom:5%;
+     }
      div#map>div.content{
         color:#000!important;
+     }
+     .inst{
+        padding:20px;
+        font-family: 'Open Sans', sans-serif;
      }
      #info_img{
         width:190px;
         height:160px;
+     }
+
+     /*---Test----*/
+
+
+
+
+      @media screen and (max-width: 62em){
+         #puppy_hero{
+            width:100%;
+            height:auto;
+         }
+         .form-wrap{
+            width:100%;
+            height:auto;
+         }
+         #map{
+            width:100%;
+         }
+      }
+     @media screen and (max-width: 48em){
+        #puppy_hero{
+           width:100%;
+           height:auto;
+        }
+        .form-wrap{
+           width:100%;
+        }
+        #map{
+           width:100%;
+        }
      }
