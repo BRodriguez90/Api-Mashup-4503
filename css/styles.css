@@ -118,7 +118,7 @@
      *****/
      .map-wrap{
         margin-top:5%;
-        margin-bottom:5%;
+        margin-bottom:2.5%;
      }
      div#map>div.content{
         color:#000!important;
@@ -151,6 +151,17 @@
          }
       }
      @media screen and (max-width: 48em){
+        #site_name{
+           font-size: 2em;
+        }
+        .headd{
+           font-size: 1.3em;
+           line-height: 1.4em;
+        }
+        .inst{
+           font-size:1em;
+           line-height:1.5em;
+        }
         #puppy_hero{
            width:100%;
            height:auto;

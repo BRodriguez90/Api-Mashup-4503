@@ -55,7 +55,7 @@
               </div>
               <div class="form-group">
                  <div class="breed_select">
-                    <label for="breed">Select Breed*</label>
+                    <label for="breed">Select Breed *</label>
                     <select id="breed" class="form-control" name="breed">
                        <option class="s_breed" id="s_breed" label="Breed" selected></option>
                    </select>
@@ -95,14 +95,13 @@
             </div>
          </div>
       </div>
-      <!--<div class="map-wrap">-->
+      <div class="map-wrap">
          <h4 class="inst text-center">After your search click on map to see shelter locations. <span> Click on the <i class="fa fa-paw" aria-hidden="true"></i> to see descriptions of the animals.</h4>
          <div id="map"></div>
-      <!--</div>-->
+      </div>
       <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiLvjIbaySEKullv0nsGuJE47uolVDz48&callback=initMap" async defer></script>
       <script type="text/javascript" src="scripts/jquery.tiltShift.js"></script>
       <script type="text/javascript" src="scripts/date.js"></script>
       <script type="text/javascript" src="scripts/date-en-US.js"></script>
@@ -190,5 +189,6 @@ function deleteMarkers() {
    markers = [];
  }
       </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiLvjIbaySEKullv0nsGuJE47uolVDz48&callback=initMap" async defer></script>
    </body>
 </html>
