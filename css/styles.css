@@ -59,6 +59,9 @@
      #search:hover{
         box-shadow: 0 5px 10px 0 rgba(0,0,0,.18), 0 4px 22px 0 rgba(0,0,0,.15);
      }
+     #search:visited{
+        color:#fff;
+     }
      .album{
         margin-top:35px;
         display:none;
@@ -132,10 +135,11 @@
         height:160px;
      }
 
-     /*---Test----*/
-
-
-
+     footer{
+        padding-top:0px;
+        padding-bottom:0px;
+        text-align: center;
+     }
 
       @media screen and (max-width: 62em){
          #puppy_hero{
