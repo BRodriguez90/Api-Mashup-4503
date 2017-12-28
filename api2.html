@@ -8,7 +8,6 @@
        <link rel="stylesheet" href="css/reset.css">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-       <linl rel="stylesheet" href="css/jquery.tiltShift.css">
        <link rel="stylesheet" href="css/album.css">
        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Righteous" rel="stylesheet">
        <link rel="stylesheet" href="css/styles.css">
@@ -84,7 +83,7 @@
   </div>       <!-- img form cont-->
   </div>       <!-- container End-->
      </section>
-
+     <hr class="hr1">
       <div id="album" class="album text-muted">
          <div class="container">
             <div class="row" id="row_append">
@@ -126,16 +125,17 @@
             zoom:5
             //scrollwheel: false
         });
-       shLatLng = [];
-       pet_info = [];
+      // shLatLng = [];
+      // pet_info = [];
        map.addListener('click', function(event) {
         addsMarker(event.shLatLng);
      });
       addsWindow();
     } // end of google maps initMap
-    function addsMarker(){
-       var paw = "images/Paw-print2.svg";
-    for (var i = 0; i < shLatLng.length; i++) {
+    addsMarker = () => {
+      const paw = "images/Paw-print2.svg";
+      for (let i = 0; i < shLatLng.length; i++) {
+        console.log(shLatLng[i]);
       marker = new google.maps.Marker({
            position: {lat:parseFloat(shLatLng[i].lat),lng:parseFloat(shLatLng[i].lng)},
            map: map,

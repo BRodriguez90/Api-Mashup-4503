@@ -13,7 +13,7 @@ $  ('.carousel').carousel();
         $('.breed_select').fadeIn();
     }); //end of click event function
 
-    function getBreed() {
+    getBreed = () => {
         var fetchanimal = $("#animal").val();
         $('#breed').children().remove();
         $.getJSON(petBreedApi + petkey + '&animal=' + fetchanimal + '&callback=?',
@@ -32,13 +32,13 @@ $  ('.carousel').carousel();
         $('#rolling').hide();
     });
 
-    function findPet() {
+    findPet = () => {
         var fetchanimal = $('#animal').val();                  // grab animal type
         var fetchbreed = $('#breed').val();                    // grab animal breed
         var fetchgender = $('#gender').val();                  // grab sex of animal
         var fetchlocation = $('#location').val();              // grab location to search
         $.getJSON(petFindApi + petkey + '&animal=' + fetchanimal + '&breed=' + fetchbreed + '&sex=' + fetchgender + '&count=6' + '&location=' + fetchlocation + /*'&distance=' + fetchdistance +*/ '&callback=?',
-            function(result) {
+            (result) => {
                 console.log(result);
                 if ($.isEmptyObject(result.petfinder.pets)) { // if no results are found.
                     $('#row_append').append('<p id="noresults">No animal matches found.</p>');
@@ -48,7 +48,8 @@ $  ('.carousel').carousel();
                         var lastUpdate = field.lastUpdate.$t;           // get last updated info
                         var dateparse = String(Date.parse(lastUpdate)); // convert updated info object into a string and parse to readable format
                         var extdate = dateparse.slice(0,15);            //slice unwanted time info from date
-                        var get_info = {                                //new object to be pushed into global pet_info array
+                        
+                        let get_info = {                                //new object to be pushed into global pet_info array
                             name: field.name.$t,
                             age: field.age.$t,
                             description: field.description.$t,
@@ -56,7 +57,13 @@ $  ('.carousel').carousel();
                             email: field.contact.email.$t,
                             picture: field.media.photos.photo[2].$t
                         };
-                        pet_info.push(get_info);
+                       noInfoGiven = () => {                            //To check if there is no information for the given object fields 
+                           get_info.description === undefined ? get_info.description = "No description available." : get_info.description;
+                           get_info.phone === undefined ? get_info.phone = "N/A" : get_info.phone;
+                           get_info.email === undefined ? get_info.email = "N/A" : get_info.email;
+                       }
+                        noInfoGiven();
+                        pet_info.push(get_info);                       
                         $('.adopt_pet').tiltShift();
                         var pet_card_info =                  // html for the pet cards
                            '<div class="col-md-4">' +
@@ -76,13 +83,25 @@ $  ('.carousel').carousel();
                         //console.log(field.media.photos.photo[1].$t);
 
                         $.getJSON(petShelterApi + petkey + '&id=' + get_shelter + '&callback=?', // Get shelter ids query string
-                            function(data2) {
-                                var latlng = {
+                            (data2) => {
+                                noLatLng = () => {
+                                    //console.log(data2.petfinder.header.status.code.$t);   
+                                    data2.petfinder.header.status.code.$t === "300" ? console.log("Not Available") : console.log("Available");             
+                                    if(data2.petfinder.header.status.code.$t === "300"){
+                                     let noLat =  data2.petfinder.shelter.latitude.$t = "0";
+                                     let noLng =  data2.petfinder.shelter.longitude.$t = "0";
+                                     let noShelt = data2.petfinder.shelter.name.$t = "Not given.";
+                                    }
+                                }
+                                noLatLng();
+                               let latlng = {
                                     lat: data2.petfinder.shelter.latitude.$t,
                                     lng: data2.petfinder.shelter.longitude.$t,
                                     shelter: data2.petfinder.shelter.name.$t
-                                };
+                                };   
+                               
                                 shLatLng.push(latlng);
+                              
                             });
                     });       // end each loop
                 }            // end else
@@ -94,6 +113,8 @@ $  ('.carousel').carousel();
         $('#row_append').children().remove();
         $('.album').show();
        // new google.maps.event.trigger(map, "resize");
+       pet_info = [];
+       shLatLng = [];
         findPet();
     });
 
