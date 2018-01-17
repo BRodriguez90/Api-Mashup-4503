@@ -75,30 +75,19 @@ $  ('.carousel').carousel();
                            get_info.email === undefined ? get_info.email = "N/A" : get_info.email;
                        }
                         noInfoGiven();
+
                         pet_info.push(get_info); 
-                        //console.log("get_info", pet_info);                  
-                       // $('.adopt_pet').tiltShift();
-                        /*const pet_card_info =                  // html for the pet cards
-                           '<div class="col-md-4">' +
-                              '<div class="pet_cards">' +
-                                 '<img class="adopt_pet tiltshift" src=' + field.media.photos.photo[3].$t + 'data-position="80" data-blur="5" data-focus="10" data-falloff="20" data-direction="x" >' +
-                                 '<div class="card_info">' +
-                                    '<p>Name: ' + field.name.$t + '</p>' +
-                                    '<p>Sex: ' + field.sex.$t + '<span id="mix">/Mix: ' + field.mix.$t + '</p>' +
-                                    '<i class="fa fa-paw" aria-hidden="true"></i><p>Location: ' + field.contact.city.$t + ', ' + field.contact.state.$t + '</p>' +
-                                    '<i class="fa fa-calendar" aria-hidden="true"></i><p id="date">Last Updated: ' + extdate + '</p>' +
-                                 '</div>' +
-                              '</div>' +
-                           '</div>';*/
-                           //Changed to template string
-                           if(field.sex.$t == "M"){
+                        field.sex.$t === "M" ? field.sex.$t = "Male" : "M";
+                        field.sex.$t === "F" ? field.sex.$t = "Female" : "F";
+                             /*if(field.sex.$t === "M"){
 
                              field.sex.$t = "Male";
 
                           }else if(field.sex.$t === "F"){
 
                              field.sex.$t = "Female";
-                          }
+                          }*/
+                          //Changed to template string
                             const pet_card_info =                  // html for the pet cards 
                            `<div class="col-md-4">
                               <div class="pet_cards">
