@@ -19,7 +19,7 @@
           <h1 class="text-center" id="site_name">Ever <i class="fa fa-paw" aria-hidden="true"></i> Animal</h1>
         </div>
       </nav>
-      <section class="hero_section">
+      <section id="hero" class="hero_section">
        <div class="container">
           <div class="row">
              <div class="col-md-12">
@@ -96,6 +96,7 @@
       </div>
       <div class="map-wrap">
          <h4 class="inst text-center">After your search click on map to see shelter locations. <span> Click on the <i class="fa fa-paw" aria-hidden="true"></i> to see descriptions of the animals.</h4>
+          <a id="new_search" class="btn btn-success" href="#hero">New Search</a>
          <div id="map"></div>
       </div>
       <footer>Designed by - Ben Rodriguez</footer>
@@ -107,14 +108,16 @@
       <script type="text/javascript" src="scripts/date-en-US.js"></script>
       <script type="text/javascript" src="scripts/api2.js"></script>
       <script type="text/javascript">
-      var myLatLng;
-      var map;
-      var marker;
-      var infowindow;
-      var markers = [];
-      var info_windows = [];
-      var contentString;
-      var wiki = 'https://en.wikipedia.org/wiki/'
+
+      let myLatLng;
+      let map;
+      let marker;
+      let infowindow;
+      let markers = [];
+      let info_windows = [];
+      let contentString;
+      let wiki = 'https://en.wikipedia.org/wiki/'
+
     function initMap() {
         myLatLng = {
             lat: 27.6021,
@@ -123,31 +126,44 @@
         map = new google.maps.Map(document.getElementById('map'), {
             center: myLatLng,
             zoom:5
-            //scrollwheel: false
+            //scrollwheel: true
         });
       // shLatLng = [];
       // pet_info = [];
-       map.addListener('click', function(event) {
-        addsMarker(event.shLatLng);
-     });
+       map.addListener('click', event => addMarker(event.shLatLng) );
       addsWindow();
     } // end of google maps initMap
-    addsMarker = () => {
+
+    const addMarker = () => {
+
       const paw = "images/Paw-print2.svg";
-      for (let i = 0; i < shLatLng.length; i++) {
-        console.log(shLatLng[i]);
-      marker = new google.maps.Marker({
-           position: {lat:parseFloat(shLatLng[i].lat),lng:parseFloat(shLatLng[i].lng)},
+
+      shLatLng.forEach((item,i) => {
+
+        console.log(item,i);
+      //for (let item = 0; item < shLatLng.length; item++) {
+
+      const marker = new google.maps.Marker({
+           position: {lat:parseFloat(item.lat),lng:parseFloat(item.lng)},
            map: map,
           // label:pet_info[i].name,
+           //animation: google.maps.Animation.DROP,
            icon:paw,
-           title: shLatLng[i].shelter,
+           title: item.shelter,
            clickable:true
       });
-      google.maps.event.addListener(marker, 'click', (function (marker, i) {
-         var fetchanimal = $("#animal").val();
-         var fetchbreed = $("#breed").val();
-           return function () {
+
+     // marker.addListener('click',toggleBounce); // addBounce to tags 
+
+     markers.push(marker);
+      console.log("lat",parseFloat(item.lat),"lng",parseFloat(item.lng));
+
+      google.maps.event.addListener(marker, 'click', ((marker, i) => {
+
+         let fetchanimal = $("#animal").val();
+         let fetchbreed = $("#breed").val();
+         console.log(i);
+           return () => {
              contentString =
                 '<div id="content" style="color:#000; text-shadow:none;">'+
                     '<div class="text-center" id="siteNotice">'+
@@ -157,38 +173,57 @@
                     '<p class=" text-center age">Age: ' + pet_info[i].age + '</p>' +
                     '<p class="text-center phone">Phone: ' + pet_info[i].phone + '</p>' +
                     '<p class="text-center email">Email: ' + pet_info[i].email + '</p>' +
+                    '<p class="text-center Location">Location: ' + pet_info[i].city + ", " + pet_info[i].state + '</p>' +
                     '<p>' + '<a href="'+wiki+fetchbreed+'_'+fetchanimal+'"' + 'target="_blank">About Breed</a>' + '</p>' +
                     '<div id="bodyContent">'+
                      '<p style="color:#000; text-shadow:none; text-align:left; line-height:180%; font-size:initial;"><b>About: </b> ' + pet_info[i].description + '</p>'+
                     '</div>'+
                 '</div>';
                infowindow.setContent(contentString);
-               //console.log(pet_info);
-               //console.log(info_windows);
                infowindow.open(map, marker);
-           }
+           } // end return 
        })(marker, i));
      /*marker.addListener('click', function(event) {
          addsWindow(event.pet_info)
       });*/
+    }); //end floop
+    // setMapOnAll();
+     //markers.push(marker);
+    //console.log("markers.push(marker)",markers.push(marker));
+    console.log("markers",markers);
+ } // end addMarker function
+
+ //Needs fixing 
+  drop = () => {
+    for(let i = 0; i < markers.length; i++) {
+      setTimeout(function(){
+        addMarker();
+      }, i * 200)
     }
-    markers.push(marker);
- } // end addsMarker function
- function addsWindow(){
-       infowindow = new google.maps.InfoWindow();
- } // End addsWindow function
- function setMapOnAll(map) {
-       for (var i = 0; i < markers.length; i++) {
+  }
+ 
+  //toggleBounce = () => (marker.getAnimation() !== null) ? marker.setAnimation(null) : marker.setAnimation(google.maps.Animation.BOUNCE);
+
+  addsWindow = () =>  infowindow = new google.maps.InfoWindow();
+
+  setMapOnAll = (map) => {
+       for (let i = 0; i < markers.length; i++) {
          markers[i].setMap(map);
        }
     }
- function clearMarkers() {
-  setMapOnAll(null);
- }
-function deleteMarkers() {
-   clearMarkers();
-   markers = [];
- }
+    
+  clearMarkers = () => setMapOnAll(null);
+ 
+  deleteMarkers = () => {
+    //setMapOnAll();
+    clearMarkers();
+    markers.length = 0;
+  }
+
+ const newSearch = document.getElementById("new_search");
+
+ newSearch.addEventListener("click", deleteMarkers);
+
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiLvjIbaySEKullv0nsGuJE47uolVDz48&callback=initMap" async defer></script>
    </body>

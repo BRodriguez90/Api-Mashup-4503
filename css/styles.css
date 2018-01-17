@@ -50,13 +50,21 @@
      .breed_select{
         display:none;
      }
-     #search{
-        background-color: rgba(255,29,29,0.7) !important;
-        border:1px solid rgba(255,29,29,0.7) !important;
+     #search,#new_search{
+        background-color: rgba(255,29,29,0.7);
+        border:1px solid rgba(255,29,29,0.7);
         box-shadow:1px 3px 10px 0 rgba(0,0,0,.18), 1px 1px 0px 0 rgba(0,0,0,.15);
         cursor:pointer;
      }
-     #search:hover{
+     
+     #new_search{
+        flex:1 100%;
+        margin:0 20% 20px 20%;
+        font-size:1.5em;
+
+     }
+
+     #search:hover,#new_search:hover{
         box-shadow: 0 5px 10px 0 rgba(0,0,0,.18), 0 4px 22px 0 rgba(0,0,0,.15);
      }
      #search:visited{
@@ -86,20 +94,22 @@
         display:none;
      }
      img.adopt_pet{
-        width:300px;
+        width:350px;
         height:266px;
         border-radius:4px;
         transition: all 0.5s ease-in-out;
-     }
-     img.adopt_pet:hover{
-        transform:scale(1.17,1.08);
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
+     }
+     img.adopt_pet:hover{
+       /* transform:scale(1.17,1.08);
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;*/
      }
      .pet_cards{
         background-color: #fff;
         color:#000;
-        padding:10px 0px 0px 0px;
+        /*padding:10px 0px 0px 0px;*/
         border-radius:4px;
         box-shadow: 0px 0px 15px 0px rgba(49,49,49,0.57);
         margin-top:5px;
@@ -111,7 +121,9 @@
 
      div.card_info{
         background-color: rgba(255,29,29,0.7);
-        margin-top:10px;
+        border-bottom-left-radius:4px;
+        border-bottom-right-radius:4px;
+        /*margin-top:10px;*/
         color:#fff;
      }
      #mix{
@@ -126,14 +138,17 @@
      ******
      *****/
      .map-wrap{
-        margin-top:2.5%;
-        margin-bottom:2.5%;
+        display:flex;
+        flex-flow:row wrap;
+        /*margin-top:2.5%;
+        margin-bottom:2.5%;*/
      }
      div#map>div.content{
         color:#000!important;
      }
      .inst{
-        padding:20px;
+        flex:1 100%;
+        padding:15px;
         font-family: 'Open Sans', sans-serif;
      }
      #info_img{
@@ -143,6 +158,7 @@
 
      footer{
         width:100%;
+        margin-top:20px;
         padding-top:10px;
         padding-bottom:10px;
         text-align: center;
