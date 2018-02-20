@@ -58,7 +58,8 @@ $(function() {
                         const get_shelter = field.shelterId.$t;           // get shelter ids
                         const lastUpdate = field.lastUpdate.$t;           // get last updated info
                         const dateparse = String(Date.parse(lastUpdate)); // convert updated info object into a string and parse to readable format
-                        const extdate = dateparse.slice(0,15);            //slice unwanted time info from date
+                        const extDate = dateparse.slice(0,15);            //slice unwanted time info from date
+                        let animalsSex = field.sex.$t;
 
                         const get_info = {                                //new object to be pushed into global pet_info array
                             name: field.name.$t,
@@ -80,8 +81,8 @@ $(function() {
 
                         pet_info.push(get_info);
 
-                        field.sex.$t === "M" ? field.sex.$t = "Male" : "M";
-                        field.sex.$t === "F" ? field.sex.$t = "Female" : "F";
+                        animalsSex === "M" ? animalsSex = "Male" : "M";
+                        animalsSex === "F" ? animalsSex = "Female" : "F";
 
                           //Changed to template string
                             const pet_card_info =                  // html for the pet cards
@@ -90,9 +91,9 @@ $(function() {
                                  <img class="adopt_pet" src= "${field.media.photos.photo[3].$t}"  data-position="80" data-blur="5" data-focus="10" data-falloff="20" data-direction="x">
                                  <div class="card_info">
                                     <p>Name: ${get_info.name} </p>
-                                    <p><i class="fa fa-venus-mars" aria-hidden="true"></i>: ${field.sex.$t} <span id="mix">/ Mixed Breed:  ${field.mix.$t} </p>
+                                    <p><i class="fa fa-venus-mars" aria-hidden="true"></i>: ${animalsSex} <span id="mix">/ Mixed Breed:  ${field.mix.$t} </p>
                                     <i class="fa fa-paw" aria-hidden="true"></i><p>Location: ${field.contact.city.$t}, ${field.contact.state.$t} </p>
-                                    <i class="fa fa-calendar" aria-hidden="true"></i><p id="date">Last Updated:  ${extdate} </p>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i><p id="date">Last Updated:  ${extDate} </p>
                                  </div>
                               </div>
                            </div>`;
@@ -129,7 +130,7 @@ $(function() {
     $('#search').on('click', function(e) {   //search for pets search button
         e.stopPropagation()
         $('#row_append').children().remove();
-        $('.album').show();
+        $('.album').fadeIn(1250);
        // new google.maps.event.trigger(map, "resize");
        pet_info = [];
        shLatLng = [];
