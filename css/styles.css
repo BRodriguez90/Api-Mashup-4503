@@ -118,6 +118,21 @@
      .pet_cards>p{
         padding-top:7px;
      }
+     /* Coolors Exported Palette - coolors.co/91d6ff-274060-335c81-1b2845-5899e2 */
+
+/* HSL */
+/*$color1: hsla(202%, 100%, 78%, 1);
+$color2: hsla(214%, 42%, 26%, 1);
+$color3: hsla(208%, 43%, 35%, 1);
+$color4: hsla(221%, 44%, 19%, 1);
+$color5: hsla(212%, 70%, 62%, 1);*/
+
+/* RGB */
+/*$color1: rgba(145, 214, 255, 1);
+$color2: rgba(39, 64, 96, 1);
+$color3: rgba(51, 92, 129, 1);
+$color4: rgba(27, 40, 69, 1);
+$color5: rgba(88, 153, 226, 1);*/
 
      div.card_info{
         background-color: rgba(255,29,29,0.7);
