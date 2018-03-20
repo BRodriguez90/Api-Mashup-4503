@@ -18,7 +18,7 @@ $(function() {
     //$('.adopt_pet').tiltShift();
     $('select#animal').on('click', function() {
         getBreed();
-        $('.breed_select').fadeIn();
+        $('.breed_select').show();
     }); //end of click event function
 
    const getBreed = () => {
@@ -47,7 +47,7 @@ $(function() {
         const fetchgender = '&sex=' + $('#gender').val();                  // grab sex of animal
         const fetchlocation = '&location=' + $('#location').val();              // grab location to search
         const callback = '&callback=?';
-
+        
         $.getJSON(petFindApi + petkey + fetchanimal + fetchbreed + fetchgender + '&count=6' + fetchlocation + callback,
             (result) => {
                 console.log(result);
@@ -90,7 +90,7 @@ $(function() {
                               <div class="pet_cards">
                                  <img class="adopt_pet" src= "${field.media.photos.photo[3].$t}"  data-position="80" data-blur="5" data-focus="10" data-falloff="20" data-direction="x">
                                  <div class="card_info">
-                                    <p>Name: ${get_info.name} </p>
+                                    <p id="petsName">${get_info.name}</p>
                                     <p><i class="fa fa-venus-mars" aria-hidden="true"></i>: ${animalsSex} <span id="mix">/ Mixed Breed:  ${field.mix.$t} </p>
                                     <i class="fa fa-paw" aria-hidden="true"></i><p>Location: ${field.contact.city.$t}, ${field.contact.state.$t} </p>
                                     <i class="fa fa-calendar" aria-hidden="true"></i><p id="date">Last Updated:  ${extDate} </p>

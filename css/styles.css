@@ -31,6 +31,7 @@
      }
      .hero_section{
         margin-top:3%;
+        margin-bottom:3%;
      }
      .headd{
         font-family: 'Open Sans', sans-serif;
@@ -52,8 +53,11 @@
      }
      #search,#new_search{
         background-color: rgba(255,29,29,0.7);
-        border:1px solid rgba(255,29,29,0.7);
-        box-shadow:1px 3px 10px 0 rgba(0,0,0,.18), 1px 1px 0px 0 rgba(0,0,0,.15);
+        border:none;
+       /* background-color:#a30b37;
+        background-color:rgb(55, 203, 209);*/
+       /* box-shadow:1px 3px 10px 0 rgba(0,0,0,.18), 1px 1px 0px 0 rgba(0,0,0,.15);*/
+       box-shadow:-5px 5px 12px 0px rgb(150, 150, 150);
         cursor:pointer;
      }
      
@@ -74,6 +78,7 @@
         /*margin-top:35px;*/
         display:none;
         /*background-color:rgb(33, 109, 165);*/
+        background-color:#ddd;
      }
      hr.hr1{
        margin-top:50px;
@@ -111,8 +116,8 @@
         color:#000;
         /*padding:10px 0px 0px 0px;*/
         border-radius:4px;
-        box-shadow: 0px 0px 15px 0px rgba(49,49,49,0.57);
-        margin-top:5px;
+        box-shadow: -11px 12px 17px -3px rgba(152, 152, 152, 0.6);
+        margin-top:12px;
         text-align:center;
      }
      .pet_cards>p{
@@ -135,16 +140,23 @@ $color4: rgba(27, 40, 69, 1);
 $color5: rgba(88, 153, 226, 1);*/
 
      div.card_info{
-        background-color: rgba(255,29,29,0.7);
+        /*background-color: rgba(255,29,29,0.7);*/
         border-bottom-left-radius:4px;
         border-bottom-right-radius:4px;
         /*margin-top:10px;*/
-        color:#fff;
+        font-size:1em;
+        font-weight:600;
+        /*color:#a30b37;*/
+        color:rgba(0, 0, 0, 0.81);
+     }
+     #petsName{
+        font-size:1.4em;
      }
      #mix{
         text-transform: capitalize;
      }
      #date{
+        padding-bottom:12px;
         font-style: italic;
      }
      /*****
