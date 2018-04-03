@@ -51,7 +51,8 @@ $(function() {
         $.getJSON(petFindApi + petkey + fetchanimal + fetchbreed + fetchgender + '&count=6' + fetchlocation + callback,
             (result) => {
                 console.log(result);
-                if ($.isEmptyObject(result.petfinder.pets)) { // if no results are found.
+                let {pets} = result.petfinder;
+                if ($.isEmptyObject(pets)) { // if no results are found.
                     $('#row_append').append('<p id="noresults">No animal matches found.</p>');
                 } else {
                     $.each(result.petfinder.pets.pet, (i, field) => {
@@ -72,13 +73,12 @@ $(function() {
                             picture: field.media.photos.photo[2].$t
                         };
 
-                     const noInfoGiven = () => {                            //To check if there is no information for the given object fields
+                      (noInfoGiven = () => {                            //To check if there is no information for the given object fields
                            get_info.description === undefined ? get_info.description = "No description available." : get_info.description;
                            get_info.phone === undefined ? get_info.phone = "N/A" : get_info.phone;
                            get_info.email === undefined ? get_info.email = "N/A" : get_info.email;
-                       }
-                        noInfoGiven();
-
+                       })();
+                
                         pet_info.push(get_info);
 
                         animalsSex === "M" ? animalsSex = "Male" : "M";
