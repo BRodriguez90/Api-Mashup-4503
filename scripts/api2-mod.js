@@ -1,14 +1,7 @@
 let pet_info = [];
 let shLatLng = [];
 $(function() {
-    let img_array = ["images/beagle-pup.jpg","images/dog-pup.jpeg"];
-    const hero_img = document.getElementById("puppy_hero");
     const $rowAppend = $('#row_append');
-
-   
-  
-    
-    
     const petkey = "7b6195f6609c531192c20efa3751c3d4";
     const petBreedApi = 'http://api.petfinder.com/breed.list?format=json&key=';
     const petFindApi = 'http://api.petfinder.com/pet.find?format=json&key=';
@@ -41,7 +34,6 @@ $(function() {
         }
     }
 
-
     $(document).ajaxStart(function() {
         $('#rolling').show();
     });
@@ -49,7 +41,6 @@ $(function() {
         $('#rolling').hide();
     });
    
-
    function findPet(){
         const fetchanimal = '&animal=' + $("#animal").val();               // grab animal type
         const fetchbreed = '&breed=' + $('#breed').val();                  // grab animal breed
@@ -152,7 +143,6 @@ $(function() {
        shLatLng = [];
       findPet();
     });
-
 
     // Add smooth scrolling to all links
       $("a").on('click', function(event) {
